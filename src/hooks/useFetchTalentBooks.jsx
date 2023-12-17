@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
 import api from "../api";
+import axios from "axios";
 
 export const useFetchTalentBooks = () => {
-  const [data, setData] = useState(null);
+  const [talentBookData, setTalentBookData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = api.fetchTalentBooks();
+        const response = await axios.get(
+          "https://genshin.jmp.blue/materials/talent-book/",
+        );
 
-        if (!response.ok) {
-          throw Error("Failed to fetch talent books!");
+        setTalentBookData(response.data);
+
+        if (response !== undefined) {
+          // Logs response if successful fetch
+          console.log(response.data);
         }
 
-        const result = await response.json();
-        setData(result);
+        setData(response);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -26,12 +31,13 @@ export const useFetchTalentBooks = () => {
     fetchData();
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-  return { data, loading, error };
+  // --------- not sure if i wanna do this here
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
+  //
+  // if (error) {
+  //   return <div>Error: {error}</div>;
+  // }
+  return { talentBookData, loading, error };
 };

@@ -4,11 +4,8 @@ import { useFetchTalentBooks } from "../hooks/useFetchTalentBooks";
 
 const TalentBooks = () => {
   const { data, loading, error } = useFetchTalentBooks();
-  return (
-    <div className="talentbooks">
-      <div>{data}</div>
-    </div>
-  );
+  // console.log(typeof data);
+  return <div className="talentbooks"></div>;
 };
 
 export default TalentBooks;
