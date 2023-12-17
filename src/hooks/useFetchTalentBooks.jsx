@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import api from "../api";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 export const useFetchTalentBooks = () => {
   const [talentBookData, setTalentBookData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -14,30 +14,24 @@ export const useFetchTalentBooks = () => {
           "https://genshin.jmp.blue/materials/talent-book/",
         );
 
+        const fetchIcons = async (data) => {
+          for (let keys in data) {
+            const iconUrl = `https://genshin.jmp.blue/materials/talent-book/teachings-of-${keys}`;
+            data[keys].icon = iconUrl;
+          }
+        };
+
+        fetchIcons(response.data);
         setTalentBookData(response.data);
-
-        if (response !== undefined) {
-          // Logs response if successful fetch
-          console.log(response.data);
-        }
-
-        setData(response);
       } catch (error) {
         setError(error.message);
       } finally {
         setLoading(false);
       }
     };
+
     fetchData();
   }, []);
 
-  // --------- not sure if i wanna do this here
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
-  //
-  // if (error) {
-  //   return <div>Error: {error}</div>;
-  // }
   return { talentBookData, loading, error };
 };

@@ -1,7 +1,5 @@
 import React from "react";
 
-const TalentBookItem = () => {
+export const TalentBookItem = ({ talentBookData }) => {
   return <div className="talentbook__item"></div>;
 };
-
-export default TalentBookItem;
