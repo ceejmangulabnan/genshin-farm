@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export const useFetchTalentBooks = () => {
+const useFetchTalentBooks = () => {
   const [talentBookData, setTalentBookData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -9,29 +9,43 @@ export const useFetchTalentBooks = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
         const response = await axios.get(
-          "https://genshin.jmp.blue/materials/talent-book/",
+          "https://genshin.jmp.blue/materials/talent-book",
         );
+        const data = await response.data;
 
-        const fetchIcons = async (data) => {
-          for (let keys in data) {
-            const iconUrl = `https://genshin.jmp.blue/materials/talent-book/teachings-of-${keys}`;
-            data[keys].icon = iconUrl;
-          }
-        };
+        for (let key in data) {
+          const iconUrl = `https://genshin.jmp.blue/materials/talent-book/teachings-of-${key}`;
+          data[key].icon = iconUrl;
+          console.log(data[key]);
+        }
 
-        fetchIcons(response.data);
-        setTalentBookData(response.data);
+        setTalentBookData(data);
       } catch (error) {
-        setError(error.message);
+        setError(error);
       } finally {
         setLoading(false);
       }
-    };
 
+      // axios
+      // .get("https://genshin.jmp.blue/materials/talent-book");
+      //  .then((response) => {
+      //    const data = response.data;
+      //    // console.log(data);
+      //    for (let key in data) {
+      //      const iconUrl = `https://genshin.jmp.blue/materials/talent-book/teachings-of-${key}`;
+      //      data[key].icon = iconUrl;
+      //      // console.log(data[key]);
+      //    }
+      //
+      //    setTalentBookData(data);
+      //  })
+      //  .catch((e) => setError(e))
+      //  .finally(() => setLoading(false));
+    };
     fetchData();
   }, []);
-
   return { talentBookData, loading, error };
 };
+
+export default useFetchTalentBooks;
