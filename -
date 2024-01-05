@@ -14,12 +14,10 @@ const useFetchTalentBooks = () => {
         );
         const data = await response.data;
 
-        // Adds respective icon URL to talentBook
         for (let key in data) {
           const iconUrl = `https://genshin.jmp.blue/materials/talent-book/teachings-of-${key}`;
           data[key].icon = iconUrl;
-          data[key].name = key;
-          // console.log(data[key]);
+          console.log(data[key]);
         }
 
         const dayNames = [
@@ -34,23 +32,13 @@ const useFetchTalentBooks = () => {
 
         const today = new Date().getDay();
 
-        // Convert to data to array of talentBooks
+        // const availableTalentBooks = data.filter((data) =>
+        //   data.availability.includes(dayNames[today]),
+        // );
 
-        // I want to get the filtered array of available TalentBooks today
-        // Convert data object of objects to array of objects
+        const availableTalentBooks = data.filter(talentBook => talentBook.availability.includes(today);
+        )
 
-        const formattedtalentBooks = [];
-        for (let talentBooks of Object.values(data)) {
-          formattedtalentBooks.push(talentBooks);
-        }
-
-        console.log(formattedtalentBooks);
-
-        const availableTalentBooks = formattedtalentBooks.filter((talentBook) =>
-          talentBook.availability.includes(dayNames[today]),
-        );
-        // First add the key of my objects as a new value
-        console.log(availableTalentBooks);
 
         setTalentBookData(availableTalentBooks);
       } catch (error) {

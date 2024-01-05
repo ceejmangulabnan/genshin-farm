@@ -1,10 +1,10 @@
 import React from "react";
 import useFetchTalentBooks from "../hooks/useFetchTalentBooks";
 import TalentBookItem from "./TalentBookItem";
-// The fetching should happen here then pass the data as props to the children
 
 const TalentBooks = () => {
   const { talentBookData, loading, error } = useFetchTalentBooks();
+
   if (!loading) {
     console.log(talentBookData);
   }
@@ -13,20 +13,34 @@ const TalentBooks = () => {
     console.log(error);
   }
 
-  // Conditional Rendering based on item availability
-
   return (
-    <div className="talentbooks p-6 bg-red-400 flex justify-between">
+    <div className="talentbooks p-6 bg-red-400 flex flex-col justify-between">
       {loading && <div>Loading</div>}
       {!loading &&
-        Object.keys(talentBookData).map((key) => (
-          <TalentBookItem
-            key={key}
-            name={key}
-            chars={talentBookData[key].characters}
-            availability={talentBookData[key].availability}
-            icon={talentBookData[key].icon}
-          />
+        // Object.keys(talentBookData).map((key) => (
+        //   <TalentBookItem
+        //     key={key}
+        //     name={key}
+        //     chars={talentBookData[key].characters}
+        //     availability={talentBookData[key].availability}
+        //     icon={talentBookData[key].icon}
+        //   />
+        // ))
+        //
+
+        talentBookData.map((talentBook) => (
+          <div className="flex items-center justify-between">
+            <div className="talentbook">
+              <TalentBookItem
+                name={talentBook.name}
+                key={talentBook.name}
+                chars={talentBook.characters}
+                availability={talentBook.availability}
+                icon={talentBook.icon}
+              />
+            </div>
+            <div className="chars">Chars go here</div>
+          </div>
         ))}
     </div>
   );
