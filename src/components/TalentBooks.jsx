@@ -32,7 +32,7 @@ const TalentBooks = () => {
                 icon={talentBook.icon}
               />
             </div>
-            <div className="chars flex">
+            <div className="chars flex flex-wrap">
               {
                 // Another map function to render CharIcons for each TalentBook
                 talentBook.characters.map((char) => (
