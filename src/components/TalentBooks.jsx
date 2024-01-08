@@ -1,12 +1,13 @@
 import React from "react";
 import useFetchTalentBooks from "../hooks/useFetchTalentBooks";
 import TalentBookItem from "./TalentBookItem";
+import CharIcon from "./CharIcon";
 
 const TalentBooks = () => {
   const { talentBookData, loading, error } = useFetchTalentBooks();
 
   if (!loading) {
-    console.log(talentBookData);
+    // console.log(talentBookData);
   }
 
   if (error) {
@@ -14,22 +15,14 @@ const TalentBooks = () => {
   }
 
   return (
-    <div className="talentbooks p-6 bg-red-400 flex flex-col justify-between">
+    <section className="talentbooks p-6 bg-red-400 flex flex-col justify-between">
       {loading && <div>Loading</div>}
       {!loading &&
-        // Object.keys(talentBookData).map((key) => (
-        //   <TalentBookItem
-        //     key={key}
-        //     name={key}
-        //     chars={talentBookData[key].characters}
-        //     availability={talentBookData[key].availability}
-        //     icon={talentBookData[key].icon}
-        //   />
-        // ))
-        //
-
         talentBookData.map((talentBook) => (
-          <div className="flex items-center justify-between">
+          <div
+            className="flex items-center justify-between"
+            key={talentBook.source}
+          >
             <div className="talentbook">
               <TalentBookItem
                 name={talentBook.name}
@@ -39,10 +32,18 @@ const TalentBooks = () => {
                 icon={talentBook.icon}
               />
             </div>
-            <div className="chars">Chars go here</div>
+            <div className="chars flex">
+              {
+                // Another map function to render CharIcons for each TalentBook
+                talentBook.characters.map((char) => (
+                  // Render CharIcon compenent and pass each char as props
+                  <CharIcon char={char} key={char} />
+                ))
+              }
+            </div>
           </div>
         ))}
-    </div>
+    </section>
   );
 };
 
