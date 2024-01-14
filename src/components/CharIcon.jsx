@@ -14,7 +14,7 @@ const CharIcon = ({ char }) => {
     return charIconUrl;
   };
 
-  // TODO: DNE images return 404 error. Try diff url if current one returns an error
+  // TODO: DNE images return 404 error. Handle by trying other image resources.
   return (
     <div className="max-w-[6rem] bg-indigo-600 m-1 rounded-xl overflow-hidden">
       <img

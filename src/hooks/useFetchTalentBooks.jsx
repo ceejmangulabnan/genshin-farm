@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { filterAvailableToday, objectToArray } from "../utils/utils";
 
 const useFetchTalentBooks = () => {
   const [talentBookData, setTalentBookData] = useState(null);
@@ -19,38 +20,10 @@ const useFetchTalentBooks = () => {
           const iconUrl = `https://genshin.jmp.blue/materials/talent-book/teachings-of-${key}`;
           data[key].icon = iconUrl;
           data[key].name = key;
-          // console.log(data[key]);
         }
 
-        const dayNames = [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-        ];
-
-        const today = new Date().getDay();
-
-        // Convert to data to array of talentBooks
-
-        // I want to get the filtered array of available TalentBooks today
-        // Convert data object of objects to array of objects
-
-        const formattedtalentBooks = [];
-        for (let talentBooks of Object.values(data)) {
-          formattedtalentBooks.push(talentBooks);
-        }
-
-        console.log(formattedtalentBooks);
-
-        const availableTalentBooks = formattedtalentBooks.filter((talentBook) =>
-          talentBook.availability.includes(dayNames[today]),
-        );
-        // First add the key of my objects as a new value
-        console.log(availableTalentBooks);
+        const formattedTalentBooks = objectToArray(data);
+        const availableTalentBooks = filterAvailableToday(formattedTalentBooks);
 
         setTalentBookData(availableTalentBooks);
       } catch (error) {
@@ -58,22 +31,6 @@ const useFetchTalentBooks = () => {
       } finally {
         setLoading(false);
       }
-
-      // axios
-      // .get("https://genshin.jmp.blue/materials/talent-book");
-      //  .then((response) => {
-      //    const data = response.data;
-      //    // console.log(data);
-      //    for (let key in data) {
-      //      const iconUrl = `https://genshin.jmp.blue/materials/talent-book/teachings-of-${key}`;
-      //      data[key].icon = iconUrl;
-      //      // console.log(data[key]);
-      //    }
-      //
-      //    setTalentBookData(data);
-      //  })
-      //  .catch((e) => setError(e))
-      //  .finally(() => setLoading(false));
     };
     fetchData();
   }, []);

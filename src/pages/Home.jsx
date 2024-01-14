@@ -1,13 +1,13 @@
 import React from "react";
 import TalentBooks from "../components/TalentBooks";
-import WeaponAscencionMaterials from "../components/WeaponAscencionMaterials";
+import WeaponAscensionMaterials from "../components/WeaponAscensionMaterials";
 
 const Home = () => {
   return (
     <div className="home">
       Home Component
       <TalentBooks />
-      <WeaponAscencionMaterials />
+      <WeaponAscensionMaterials />
     </div>
   );
 };
