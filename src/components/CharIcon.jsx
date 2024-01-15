@@ -2,12 +2,12 @@ import React from "react";
 
 // Display Chars that can farm on the current day separated by region
 
-const CharIcon = ({ char }) => {
+const CharIcon = ({ char, chars: allChars }) => {
   const getCharIconUrl = () => {
     // Generate CharIcon Url
     let charIconUrl = `https://genshin.jmp.blue/characters/${char}/icon`;
     if (charIconUrl.includes(`traveler`)) {
-      // return charIconUrl.concat(`-lumine`);
+      return charIconUrl.concat(`-big-lumine`);
     }
 
     // Specify which characters I want to use 'icon-big'

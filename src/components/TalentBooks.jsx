@@ -2,9 +2,11 @@ import React from "react";
 import useFetchTalentBooks from "../hooks/useFetchTalentBooks";
 import TalentBookItem from "./TalentBookItem";
 import CharIcon from "./CharIcon";
+import useGetChars from "../hooks/useGetChars";
 
 const TalentBooks = () => {
   const { talentBookData, loading, error } = useFetchTalentBooks();
+  const { chars } = useGetChars();
 
   if (!loading) {
     // console.log(talentBookData);
@@ -37,7 +39,7 @@ const TalentBooks = () => {
                 // Another map function to render CharIcons for each TalentBook
                 talentBook.characters.map((char) => (
                   // Render CharIcon compenent and pass each char as props
-                  <CharIcon char={char} key={char} />
+                  <CharIcon char={char} key={char} allChars={chars} />
                 ))
               }
             </div>
