@@ -19,7 +19,6 @@ const CharIcon = ({ char, chars: allChars }) => {
   };
   const fallbackCharIconUrl = `https://genshin.jmp.blue/characters/${char}/icon-big`;
 
-  // TODO: DNE images return 404 error. Handle by trying other image resources.
   return (
     <div className="max-w-[6rem] bg-indigo-600 m-1 rounded-xl overflow-hidden">
       <img
