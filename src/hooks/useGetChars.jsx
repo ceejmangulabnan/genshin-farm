@@ -17,24 +17,24 @@ const useGetChars = () => {
       let charsData = [];
       let fourStars = [];
       let fiveStars = [];
-      for (let char of charNames) {
-        const response = await axios.get(
-          `https://genshin.jmp.blue/characters/${char}`,
-        );
-        const data = await response.data;
 
-        // Sorting
-        if (data.rarity === 4) {
-          fourStars.push(data);
+      const requests = charNames.map((charName) =>
+        axios.get(`https://genshin.jmp.blue/characters/${charName}`),
+      );
+
+      const responses = await Promise.all(requests);
+
+      const data = responses.map((response) => response.data);
+
+      for (let char of data) {
+        if (char.rarity === 4) {
+          fourStars.push(char);
         } else {
-          fiveStars.push(data);
+          fiveStars.push(char);
         }
-        charsData.push(data);
+        charsData.push(char);
       }
 
-      console.log(fourStars);
-      console.log(fiveStars);
-      console.log(charsData);
       return [charsData, fourStars, fiveStars];
     };
 
@@ -48,7 +48,9 @@ const useGetChars = () => {
 
         // Loop through each character in charNames,
         // make a get req then push all that info in a new object array charsData
-        const [charsData, fourStars, fiveStars] = getCharData(charNames);
+        const [charsData, fourStars, fiveStars] = await getCharData(charNames);
+        console.log(fourStars);
+        console.log(fiveStars);
 
         setCharsData(charsData);
         setFourStars(fourStars);
