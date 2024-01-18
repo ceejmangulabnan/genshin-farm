@@ -10,6 +10,8 @@ const useGetChars = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Create function that will return jsx with correct bgcolor of CharIcon depending on rarity
+
     const getCharData = async (charNames) => {
       // Loop through chars to get charData then push data to new array
       let charsData = [];
@@ -47,6 +49,7 @@ const useGetChars = () => {
         // Loop through each character in charNames,
         // make a get req then push all that info in a new object array charsData
         const [charsData, fourStars, fiveStars] = getCharData(charNames);
+
         setCharsData(charsData);
         setFourStars(fourStars);
         setFiveStars(fiveStars);

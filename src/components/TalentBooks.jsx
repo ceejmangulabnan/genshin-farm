@@ -6,7 +6,7 @@ import useGetChars from "../hooks/useGetChars";
 
 const TalentBooks = () => {
   const { talentBookData, loading, error } = useFetchTalentBooks();
-  const { chars } = useGetChars();
+  const { chars, fourStars } = useGetChars();
 
   if (!loading) {
     // console.log(talentBookData);

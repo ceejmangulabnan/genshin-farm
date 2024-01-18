@@ -2,7 +2,12 @@ import React from "react";
 
 // Display Chars that can farm on the current day separated by region
 
-const CharIcon = ({ char, chars: allChars }) => {
+const CharIcon = ({ char, chars: allChars, fourStars }) => {
+  // const renderSortedRarity = () => {
+  //   if (char.match());
+  //   )
+  //
+  // }
   const getCharIconUrl = () => {
     // Generate CharIcon Url
     let charIconUrl = `https://genshin.jmp.blue/characters/${char}/icon`;
@@ -11,7 +16,7 @@ const CharIcon = ({ char, chars: allChars }) => {
     }
 
     // Specify which characters I want to use 'icon-big'
-    if (charIconUrl.includes("lyney")) {
+    if (charIconUrl.includes("lyney", "freminet")) {
       return `https://genshin.jmp.blue/characters/${char}/icon-big
 `;
     }
