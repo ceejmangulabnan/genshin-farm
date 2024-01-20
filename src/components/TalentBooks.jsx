@@ -36,6 +36,10 @@ const TalentBooks = () => {
             </div>
             <div className="chars flex flex-wrap justify-end">
               {
+                // TODO: Use a new component to render CharIcon using map(). Props: talentBook
+              }
+
+              {
                 // Another map function to render CharIcons for each TalentBook
                 talentBook.characters.map((char) => (
                   // Render CharIcon compenent and pass each char as props

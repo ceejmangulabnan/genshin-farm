@@ -12,3 +12,22 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.fourstar-bg {
+  background: rgb(135, 34, 195);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(135, 34, 195, 1) 0%,
+    rgba(123, 45, 253, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(135, 34, 195, 1) 0%,
+    rgba(123, 45, 253, 1) 100%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(135, 34, 195, 1) 0%,
+    rgba(123, 45, 253, 1) 100%
+  );
+}

@@ -1,11 +1,10 @@
 import React from "react";
+import { formatDashedString } from "../utils/utils";
 
-// Display Chars that can farm on the current day separated by region
+// Display Chars that farmable on the current day separated by region
 
 const CharIcon = ({ char, chars: allChars, fourStars }) => {
   const getCharIconUrl = () => {
-    // Check if we're getting the correct char
-    // console.log(char);
     const altCharNames = ["lyney", "freminet", "lynette"];
     let charIconUrl = `https://genshin.jmp.blue/characters/${char}/icon`;
     if (charIconUrl.includes(`traveler`)) {

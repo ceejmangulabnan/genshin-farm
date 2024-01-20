@@ -36,3 +36,7 @@ export const capitalizeFirstChar = (str) => {
 export const formatCleanString = (str) => {
   return str.replaceAll("-", " ");
 };
+
+export const formatDashedString = (str) => {
+  return str.toLowerCase().replaceAll(" ", "-");
+};
