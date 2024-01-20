@@ -3,7 +3,7 @@ import { formatDashedString } from "../utils/utils";
 
 // Display Chars that farmable on the current day separated by region
 
-const CharIcon = ({ char, chars: allChars, fourStars }) => {
+const CharIcon = () => {
   const getCharIconUrl = () => {
     const altCharNames = ["lyney", "freminet", "lynette"];
     let charIconUrl = `https://genshin.jmp.blue/characters/${char}/icon`;

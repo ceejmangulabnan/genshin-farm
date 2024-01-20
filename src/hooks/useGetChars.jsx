@@ -3,7 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 const useGetChars = () => {
-  const [charsData, setCharsData] = useState([]);
+  const [allCharsData, setAllCharsData] = useState([]);
   const [fourStars, setFourStars] = useState([]);
   const [fiveStars, setFiveStars] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -44,15 +44,13 @@ const useGetChars = () => {
         const response = await axios.get(`https://genshin.jmp.blue/characters`);
         const charNames = await response.data;
 
-        // Do something with the data
-
-        // Loop through each character in charNames,
-        // make a get req then push all that info in a new object array charsData
-        const [charsData, fourStars, fiveStars] = await getCharData(charNames);
+        const [allCharsData, fourStars, fiveStars] =
+          await getCharData(charNames);
+        console.log(allCharsData);
         console.log(fourStars);
         console.log(fiveStars);
 
-        setCharsData(charsData);
+        setAllCharsData(allCharsData);
         setFourStars(fourStars);
         setFiveStars(fiveStars);
       } catch (error) {
@@ -64,7 +62,7 @@ const useGetChars = () => {
 
     fetchChars();
   }, []);
-  return { charsData, fourStars, fiveStars, loading, error };
+  return { allCharsData, fourStars, fiveStars, loading, error };
 };
 
 export default useGetChars;

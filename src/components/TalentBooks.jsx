@@ -3,13 +3,14 @@ import useFetchTalentBooks from "../hooks/useFetchTalentBooks";
 import TalentBookItem from "./TalentBookItem";
 import CharIcon from "./CharIcon";
 import useGetChars from "../hooks/useGetChars";
+import RenderTalentBookChars from "./RenderTalentBookChars";
 
 const TalentBooks = () => {
   const { talentBookData, loading, error } = useFetchTalentBooks();
-  const { chars, fourStars } = useGetChars();
+  const { allCharsData } = useGetChars();
 
   if (!loading) {
-    // console.log(talentBookData);
+    console.log("TalentBookData is ready to render", talentBookData);
   }
 
   if (error) {
@@ -35,17 +36,10 @@ const TalentBooks = () => {
               />
             </div>
             <div className="chars flex flex-wrap justify-end">
-              {
-                // TODO: Use a new component to render CharIcon using map(). Props: talentBook
-              }
-
-              {
-                // Another map function to render CharIcons for each TalentBook
-                talentBook.characters.map((char) => (
-                  // Render CharIcon compenent and pass each char as props
-                  <CharIcon char={char} key={char} allChars={chars} />
-                ))
-              }
+              <RenderTalentBookChars
+                talentBookChars={talentBook.characters}
+                allCharsData={allCharsData}
+              />
             </div>
           </div>
         ))}
