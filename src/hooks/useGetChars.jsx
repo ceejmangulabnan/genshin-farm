@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
+import { formatDashedString } from "../utils/utils";
 
 const useGetChars = () => {
   const [allCharsData, setAllCharsData] = useState([]);
@@ -27,6 +28,10 @@ const useGetChars = () => {
       const data = responses.map((response) => response.data);
 
       for (let char of data) {
+        // HACK: ADD DASHED NAME TO CHARDATA
+
+        char.id = formatDashedString(char.name);
+
         if (char.rarity === 4) {
           fourStars.push(char);
         } else {
