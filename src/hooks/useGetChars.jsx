@@ -11,10 +11,7 @@ const useGetChars = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Create function that will return jsx with correct bgcolor of CharIcon depending on rarity
-
     const getCharData = async (charNames) => {
-      // Loop through chars to get charData then push data to new array
       let charsData = [];
       let fourStars = [];
       let fiveStars = [];
@@ -31,6 +28,22 @@ const useGetChars = () => {
         // HACK: ADD DASHED NAME TO CHARDATA
 
         char.id = formatDashedString(char.name);
+
+        // Handle special name case of traveler
+        if (char.id === "traveler") {
+          let vision = char.vision.toLowerCase();
+          if (vision === "anemo") {
+            char.id.concat("-anemo");
+          } else if (vision === "geo") {
+            char.id.concat("-geo");
+          } else if (vision === "electro") {
+            char.id.concat("electro");
+          } else if (vision === "dendro") {
+            char.id.concat("-dendro");
+          } else if (vision === "hydro") {
+            char.id.concat("-hydro");
+          }
+        }
 
         if (char.rarity === 4) {
           fourStars.push(char);
