@@ -7,7 +7,7 @@ import RenderTalentBookChars from "./RenderTalentBookChars";
 
 const TalentBooks = () => {
   const { talentBookData, loading, error } = useFetchTalentBooks();
-  const { allCharsData } = useGetChars();
+  const { allCharsData, loading: getCharsloading } = useGetChars();
 
   if (!loading) {
     console.log("TalentBookData is ready to render", talentBookData);
@@ -36,10 +36,12 @@ const TalentBooks = () => {
               />
             </div>
             <div className="chars flex flex-wrap justify-end">
-              <RenderTalentBookChars
-                talentBookChars={talentBook.characters}
-                allCharsData={allCharsData}
-              />
+              {!getCharsloading && (
+                <RenderTalentBookChars
+                  talentBookChars={talentBook.characters}
+                  allCharsData={allCharsData}
+                />
+              )}
             </div>
           </div>
         ))}

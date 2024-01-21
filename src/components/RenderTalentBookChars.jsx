@@ -6,7 +6,9 @@ const RenderTalentBookChars = ({ talentBookChars, allCharsData }) => {
   const talentBookCharData = [];
 
   for (let charName of talentBookChars) {
-    talentBookCharData.push(allCharsData.find((char) => char.id === charName));
+    talentBookCharData.push(
+      allCharsData.find((char) => char.id.includes(charName)),
+    );
   }
 
   console.log("CHAR ICON PROPS", talentBookCharData);

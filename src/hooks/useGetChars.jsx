@@ -26,22 +26,21 @@ const useGetChars = () => {
 
       for (let char of data) {
         // HACK: ADD DASHED NAME TO CHARDATA
-
         char.id = formatDashedString(char.name);
+        let vision = char.vision.toLowerCase();
 
         // Handle special name case of traveler
         if (char.id === "traveler") {
-          let vision = char.vision.toLowerCase();
           if (vision === "anemo") {
-            char.id.concat("-anemo");
+            char.id = char.id.concat("-anemo");
           } else if (vision === "geo") {
-            char.id.concat("-geo");
+            char.id = char.id.concat("-geo");
           } else if (vision === "electro") {
-            char.id.concat("electro");
+            char.id = char.id.concat("-electro");
           } else if (vision === "dendro") {
-            char.id.concat("-dendro");
+            char.id = char.id.concat("-dendro");
           } else if (vision === "hydro") {
-            char.id.concat("-hydro");
+            char.id = char.id.concat("-hydro");
           }
         }
 
