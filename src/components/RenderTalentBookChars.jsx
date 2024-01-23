@@ -1,7 +1,7 @@
 import React from "react";
 import CharIcon from "./CharIcon";
 
-const RenderTalentBookChars = ({ talentBookChars, allCharsData }) => {
+const TalentBookCharList = ({ talentBookChars, allCharsData }) => {
   // TODO: Map to render CharIcons
   const talentBookCharData = [];
 
@@ -9,16 +9,17 @@ const RenderTalentBookChars = ({ talentBookChars, allCharsData }) => {
     talentBookCharData.push(
       allCharsData.find((char) => char.id.includes(charName)),
     );
+    charName;
   }
 
   console.log("CHAR ICON PROPS", talentBookCharData);
   return (
     <div className="talentBookChars">
-      {
-        // Map CharIcon Here
-      }
+      {/* {talentBookCharData.map((charData) => ( */}
+      {/*   <CharIcon charData={charData} talentBookChars={talentBookChars} /> */}
+      {/* ))} */}
     </div>
   );
 };
 
-export default RenderTalentBookChars;
+export default TalentBookCharList;

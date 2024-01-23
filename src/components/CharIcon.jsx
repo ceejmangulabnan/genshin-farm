@@ -3,10 +3,10 @@ import { formatDashedString } from "../utils/utils";
 
 // Display Chars that farmable on the current day separated by region
 
-const CharIcon = () => {
+const CharIcon = ({ charData, talentBookChars }) => {
   const getCharIconUrl = () => {
     const altCharNames = ["lyney", "freminet", "lynette"];
-    let charIconUrl = `https://genshin.jmp.blue/characters/${char}/icon`;
+    let charIconUrl = `https://genshin.jmp.blue/characters/${charData.id}/icon`;
     if (charIconUrl.includes(`traveler`)) {
       return charIconUrl.concat(`-big-lumine`);
     }

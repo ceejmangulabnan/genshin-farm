@@ -25,7 +25,6 @@ const useGetChars = () => {
       const data = responses.map((response) => response.data);
 
       for (let char of data) {
-        // HACK: ADD DASHED NAME TO CHARDATA
         char.id = formatDashedString(char.name);
         let vision = char.vision.toLowerCase();
 
@@ -44,6 +43,10 @@ const useGetChars = () => {
           }
         }
 
+        char.url_name = charNames.find((urlCharName) =>
+          formatDashedString(char.name).includes(urlCharName),
+        );
+
         if (char.rarity === 4) {
           fourStars.push(char);
         } else {
@@ -60,6 +63,7 @@ const useGetChars = () => {
         setLoading(true);
         const response = await axios.get(`https://genshin.jmp.blue/characters`);
         const charNames = await response.data;
+        console.log("charNames for url", charNames);
 
         const [allCharsData, fourStars, fiveStars] =
           await getCharData(charNames);
