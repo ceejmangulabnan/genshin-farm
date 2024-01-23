@@ -19,41 +19,63 @@ const useGetChars = () => {
       const requests = charNames.map((charName) =>
         axios.get(`https://genshin.jmp.blue/characters/${charName}`),
       );
-
       const responses = await Promise.all(requests);
-
       const data = responses.map((response) => response.data);
 
-      for (let char of data) {
-        char.id = formatDashedString(char.name);
-        let vision = char.vision.toLowerCase();
+      const addCharProps = () => {
+        for (let char of data) {
+          char.id = formatDashedString(char.name);
+          let vision = char.vision.toLowerCase();
 
-        // Handle special name case of traveler
-        if (char.id === "traveler") {
-          if (vision === "anemo") {
-            char.id = char.id.concat("-anemo");
-          } else if (vision === "geo") {
-            char.id = char.id.concat("-geo");
-          } else if (vision === "electro") {
-            char.id = char.id.concat("-electro");
-          } else if (vision === "dendro") {
-            char.id = char.id.concat("-dendro");
-          } else if (vision === "hydro") {
-            char.id = char.id.concat("-hydro");
+          // Handle special name case of traveler
+          if (char.id === "traveler") {
+            if (vision === "anemo") {
+              char.id = char.id.concat("-anemo");
+            } else if (vision === "geo") {
+              char.id = char.id.concat("-geo");
+            } else if (vision === "electro") {
+              char.id = char.id.concat("-electro");
+            } else if (vision === "dendro") {
+              char.id = char.id.concat("-dendro");
+            } else if (vision === "hydro") {
+              char.id = char.id.concat("-hydro");
+            }
           }
-        }
 
-        char.url_name = charNames.find((urlCharName) =>
-          formatDashedString(char.name).includes(urlCharName),
-        );
+          let charUrlName = charNames.find((urlCharName) =>
+            formatDashedString(char.name).includes(urlCharName),
+          );
+          console.log(charUrlName);
 
-        if (char.rarity === 4) {
-          fourStars.push(char);
-        } else {
-          fiveStars.push(char);
+          // if (charUrlName && charUrlName.includes("traveler")) {
+          //   char.url_name = "traveler";
+
+          if (char.name.toLowerCase() === "traveler") {
+            char.url_name = "traveler";
+          } else {
+            char.url_name = charUrlName;
+          }
+
+          // if (charUrlName.includes("traveler")) {
+          //   char.url_name = "traveler";
+          // } else {
+          //   char.url_name = charUrlName;
+          // }
+
+          // FIX: BREAKING CHANGE?
+          // if (char.url_name.includes("traveler")) {
+          //   char.url_name = "traveler";
+          // }
+
+          if (char.rarity === 4) {
+            fourStars.push(char);
+          } else {
+            fiveStars.push(char);
+          }
+          charsData.push(char);
         }
-        charsData.push(char);
-      }
+      };
+      addCharProps();
 
       return [charsData, fourStars, fiveStars];
     };

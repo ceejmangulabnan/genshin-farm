@@ -5,7 +5,7 @@ import useGenerateCharIconUrl from "../hooks/useGenerateCharIconUrl";
 
 const CharIcon = ({ charData, talentBookCharData }) => {
   const charIconUrl = useGenerateCharIconUrl({ charData, talentBookCharData });
-  const fallbackCharIconUrl = `https://genshin.jmp.blue/characters/${charData.id}/icon-big`;
+  const fallbackCharIconUrl = `https://genshin.jmp.blue/characters/${charData.url_name}/icon-big`;
 
   return (
     <div className="max-w-[6rem] bg-indigo-600 m-1 rounded-xl overflow-hidden">

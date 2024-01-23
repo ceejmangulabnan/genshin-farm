@@ -16,7 +16,11 @@ const TalentBookCharList = ({ talentBookChars, allCharsData }) => {
   return (
     <div className="talentBookChars">
       {talentBookCharData.map((charData) => (
-        <CharIcon charData={charData} talentBookChars={talentBookChars} />
+        <CharIcon
+          charData={charData}
+          talentBookCharData={talentBookCharData}
+          key={charData.id}
+        />
       ))}
     </div>
   );
