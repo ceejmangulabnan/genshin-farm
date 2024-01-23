@@ -1,9 +1,9 @@
 import React from "react";
 import useFetchTalentBooks from "../hooks/useFetchTalentBooks";
-import TalentBookItem from "./TalentBookItem";
-import CharIcon from "./CharIcon";
 import useGetChars from "../hooks/useGetChars";
-import RenderTalentBookChars from "./RenderTalentBookChars";
+
+import TalentBookItem from "./TalentBookItem";
+import TalentBookCharList from "./TalentBookCharList";
 
 const TalentBooks = () => {
   const { talentBookData, loading, error } = useFetchTalentBooks();
@@ -37,7 +37,7 @@ const TalentBooks = () => {
             </div>
             <div className="chars flex flex-wrap justify-end">
               {!getCharsloading && (
-                <RenderTalentBookChars
+                <TalentBookCharList
                   talentBookChars={talentBook.characters}
                   allCharsData={allCharsData}
                 />
