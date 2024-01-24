@@ -36,3 +36,7 @@ export const formatCleanString = (str) => {
 export const formatDashedString = (str) => {
   return str.toLowerCase().replaceAll(" ", "-");
 };
+
+export const compareRarity = (a, b) => {
+  return b.rarity - a.rarity;
+};

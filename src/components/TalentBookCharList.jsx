@@ -1,6 +1,8 @@
 import React from "react";
 import CharIcon from "./CharIcon";
 
+import { compareRarity } from "../utils/utils";
+
 const TalentBookCharList = ({ talentBookChars, allCharsData }) => {
   // TODO: Map to render CharIcons
   const talentBookCharData = [];
@@ -12,9 +14,11 @@ const TalentBookCharList = ({ talentBookChars, allCharsData }) => {
     );
   }
 
-  console.log("CHAR ICON PROPS", talentBookCharData);
+  talentBookCharData.sort(compareRarity);
+
+  // console.log("CHAR ICON PROPS", talentBookCharData);
   return (
-    <div className="talentBookChars">
+    <div className="chars flex flex-wrap justify-end">
       {talentBookCharData.map((charData) => (
         <CharIcon
           charData={charData}

@@ -35,14 +35,12 @@ const TalentBooks = () => {
                 icon={talentBook.icon}
               />
             </div>
-            <div className="chars flex flex-wrap justify-end">
-              {!getCharsloading && (
-                <TalentBookCharList
-                  talentBookChars={talentBook.characters}
-                  allCharsData={allCharsData}
-                />
-              )}
-            </div>
+            {!getCharsloading && (
+              <TalentBookCharList
+                talentBookChars={talentBook.characters}
+                allCharsData={allCharsData}
+              />
+            )}
           </div>
         ))}
     </section>
