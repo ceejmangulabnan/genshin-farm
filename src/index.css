@@ -31,3 +31,22 @@
     rgba(123, 45, 253, 1) 100%
   );
 }
+
+.fivestar-bg {
+  background: rgb(223, 191, 0);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(223, 191, 0, 1) 0%,
+    rgba(213, 145, 0, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(223, 191, 0, 1) 0%,
+    rgba(213, 145, 0, 1) 100%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(223, 191, 0, 1) 0%,
+    rgba(213, 145, 0, 1) 100%
+  );
+}

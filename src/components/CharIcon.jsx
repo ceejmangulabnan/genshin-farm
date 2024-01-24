@@ -7,8 +7,23 @@ const CharIcon = ({ charData, talentBookCharData }) => {
   const charIconUrl = useGenerateCharIconUrl({ charData, talentBookCharData });
   const fallbackCharIconUrl = `https://genshin.jmp.blue/characters/${charData.url_name}/icon-big`;
 
+  // const bgRarity = () => {
+  //   if (charData.rarity) {
+  //   }
+  // };
+  //
+  const rarityBackgroundColor = () => {
+    if (charData.rarity === 4) {
+      return `fourstar-bg`;
+    } else {
+      return `fivestar-bg`;
+    }
+  };
+
   return (
-    <div className="max-w-[6rem] bg-indigo-600 m-1 rounded-xl overflow-hidden">
+    <div
+      className={`${rarityBackgroundColor()} max-w-[6rem]  m-1 rounded-xl overflow-hidden`}
+    >
       <img
         src={charIconUrl}
         onError={(e) => {
