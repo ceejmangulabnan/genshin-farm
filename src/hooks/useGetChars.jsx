@@ -29,43 +29,29 @@ const useGetChars = () => {
 
           // Handle special name case of traveler
           if (char.id === "traveler") {
-            if (vision === "anemo") {
-              char.id = char.id.concat("-anemo");
-            } else if (vision === "geo") {
-              char.id = char.id.concat("-geo");
-            } else if (vision === "electro") {
-              char.id = char.id.concat("-electro");
-            } else if (vision === "dendro") {
-              char.id = char.id.concat("-dendro");
-            } else if (vision === "hydro") {
-              char.id = char.id.concat("-hydro");
+            switch (vision) {
+              case "anemo":
+              case "geo":
+              case "electro":
+              case "dendro":
+              case "hydro":
+                char.id = `${char.id}-${vision}`;
+                char.url_name = char.id;
+                break;
+              // Add more cases if needed
+              default:
+                // Handle unexpected vision value (optional)
+                break;
             }
           }
 
           let charUrlName = charNames.find((urlCharName) =>
             formatDashedString(char.name).includes(urlCharName),
           );
-          console.log(charUrlName);
 
-          // if (charUrlName && charUrlName.includes("traveler")) {
-          //   char.url_name = "traveler";
-
-          if (char.name.toLowerCase() === "traveler") {
-            char.url_name = "traveler";
-          } else {
+          if (char.name.toLowerCase() !== "traveler") {
             char.url_name = charUrlName;
           }
-
-          // if (charUrlName.includes("traveler")) {
-          //   char.url_name = "traveler";
-          // } else {
-          //   char.url_name = charUrlName;
-          // }
-
-          // FIX: BREAKING CHANGE?
-          // if (char.url_name.includes("traveler")) {
-          //   char.url_name = "traveler";
-          // }
 
           if (char.rarity === 4) {
             fourStars.push(char);
