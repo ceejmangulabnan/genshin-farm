@@ -7,11 +7,6 @@ const CharIcon = ({ charData, talentBookCharData }) => {
   const charIconUrl = useGenerateCharIconUrl({ charData, talentBookCharData });
   const fallbackCharIconUrl = `https://genshin.jmp.blue/characters/${charData.url_name}/icon-big`;
 
-  // const bgRarity = () => {
-  //   if (charData.rarity) {
-  //   }
-  // };
-  //
   const rarityBackgroundColor = () => {
     if (charData.rarity === 4) {
       return `fourstar-bg`;
