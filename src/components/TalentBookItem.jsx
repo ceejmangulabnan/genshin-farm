@@ -6,8 +6,8 @@ const TalentBookItem = ({ name, chars, availability, icon }) => {
 
   // Conditional logic will be here
   return (
-    <div className="talentbook__item flex flex-col items-center ">
-      <div className="bg-gray-600 rounded-lg  ">
+    <div className="talentbook__item  flex flex-col items-center p-2 pr-6 ">
+      <div className="bg-[#C2C2C2] rounded-lg  ">
         <img src={icon} className="max-w-[5rem]" />
       </div>
       <p>{name}</p>

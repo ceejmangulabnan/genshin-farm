@@ -6,16 +6,12 @@ const WeaponAscensionMaterials = () => {
   const { weaponAscensionMaterials, loading } =
     useFetchWeaponAscensionMaterials();
 
-  // returns undefined but inside the hook data works
-  // console.log(weaponAscensionMaterials);
-  // console.log(loading);
   if (!loading) {
     // console.log(weaponAscensionMaterials);
   }
 
   return (
-    <section className="weapon-ascension">
-      WeaponAscencionMaterials
+    <section className="weapon-ascension bg-[#EDEDED] p-6 rounded-2xl">
       {loading && <div>Loading</div>}
       {!loading &&
         weaponAscensionMaterials.map((weaponMaterial) => (

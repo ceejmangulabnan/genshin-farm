@@ -18,7 +18,7 @@ const TalentBooks = () => {
   }
 
   return (
-    <section className="talentbooks p-6 bg-red-400 flex flex-col justify-between">
+    <section className="talentbooks p-6 bg-[#EDEDED] flex flex-col  justify-between rounded-2xl">
       {loading && <div>Loading</div>}
       {!loading &&
         talentBookData.map((talentBook) => (

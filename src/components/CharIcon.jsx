@@ -25,7 +25,7 @@ const CharIcon = ({ charData, talentBookCharData }) => {
           e.target.onError = null;
           e.target.src = fallbackCharIconUrl;
         }}
-        className="object-cover object-position-top w-[6rem] h-[6rem]"
+        className="object-cover object-position-top w-[4.5rem] h-[4.5rem]"
       />
     </div>
   );
