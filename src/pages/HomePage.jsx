@@ -4,7 +4,7 @@ import WeaponAscensionMaterials from "../components/WeaponAscensionMaterials";
 
 const HomePage = () => {
   return (
-    <div className="home-page px-20 pt-10">
+    <div className="home-page px-20 py-10">
       <div className="dailies flex justify-between">
         <TalentBooks />
         <WeaponAscensionMaterials />

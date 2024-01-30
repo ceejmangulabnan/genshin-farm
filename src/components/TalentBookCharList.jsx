@@ -4,7 +4,6 @@ import CharIcon from "./CharIcon";
 import { compareRarity } from "../utils/utils";
 
 const TalentBookCharList = ({ talentBookChars, allCharsData }) => {
-  // TODO: Map to render CharIcons
   const talentBookCharData = [];
 
   // Get data of chars for each talentBook
@@ -16,15 +15,16 @@ const TalentBookCharList = ({ talentBookChars, allCharsData }) => {
 
   talentBookCharData.sort(compareRarity);
 
-  // console.log("CHAR ICON PROPS", talentBookCharData);
   return (
     <div className="chars flex flex-wrap justify-end">
       {talentBookCharData.map((charData) => (
-        <CharIcon
-          charData={charData}
-          talentBookCharData={talentBookCharData}
-          key={charData.id}
-        />
+        <>
+          <CharIcon
+            charData={charData}
+            talentBookCharData={talentBookCharData}
+            key={charData.id}
+          />
+        </>
       ))}
     </div>
   );

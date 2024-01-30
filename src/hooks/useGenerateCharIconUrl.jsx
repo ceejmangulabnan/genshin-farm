@@ -1,6 +1,6 @@
 import React from "react";
 
-const useGenerateCharIconUrl = ({ charData, talentBookCharData }) => {
+const useGenerateCharIconUrl = ({ charData }) => {
   const altCharNames = ["lyney", "freminet", "lynette"];
   let charIconUrl = `https://genshin.jmp.blue/characters/${charData.url_name}/icon`;
   if (charData.url_name.includes(`traveler`)) {
