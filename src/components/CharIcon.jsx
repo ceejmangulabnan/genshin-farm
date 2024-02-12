@@ -27,10 +27,11 @@ const CharIcon = ({ charData }) => {
             e.target.onError = null;
             e.target.src = fallbackCharIconUrl;
           }}
+          alt={charData.name}
           className="object-cover object-position-top w-[4rem] h-[4rem]"
         />
       </div>
-      <div className="relative top-[-4rem] right-[-3.8rem] rounded-[50%] bg-white w-5">
+      <div className="relative top-[-4rem] right-[-3.8rem] rounded-[50%] bg-white w-5 shadow-md flex items-center justify-center p-[0.1rem]">
         <img src={visionIcon} className="" />
       </div>
     </div>

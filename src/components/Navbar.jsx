@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <div className="navbar flex justify-between px-6 py-4 shadow-md">
       <Link to="/">
-        <h1 className="navbar__title text-xl">Genshin Farm Guide</h1>
+        <h1 className="navbar__title text-xl font-bold">Genshin Farm Guide</h1>
       </Link>
       <nav>
         <Link to="/">Home</Link>

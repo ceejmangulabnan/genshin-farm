@@ -11,7 +11,7 @@ const WeaponAscensionMaterials = () => {
   }
 
   return (
-    <section className="weapon-ascension bg-[#EDEDED] p-6 rounded-2xl">
+    <section className="weapon-ascension self-start bg-[#EDEDED] p-6 rounded-2xl">
       {loading && <div>Loading</div>}
       {!loading &&
         weaponAscensionMaterials.map((weaponMaterial) => (

@@ -10,6 +10,7 @@ const useFetchWeaponAscensionMaterials = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  console.log(weaponAscensionMaterials);
   const generateIconUrl = (weaponAscensionMaterials) => {
     for (let key in weaponAscensionMaterials) {
       const itemId = weaponAscensionMaterials[key].items[0].id.replace(
@@ -17,6 +18,9 @@ const useFetchWeaponAscensionMaterials = () => {
         "-",
       );
       const iconUrl = `https://genshin.jmp.blue/materials/weapon-ascension/${itemId}`;
+
+      // Special cases
+      // if (weaponAscensionMaterials[key] === "")
       weaponAscensionMaterials[key].icon = iconUrl;
       weaponAscensionMaterials[key].name = itemId;
       weaponAscensionMaterials[key].id = key;

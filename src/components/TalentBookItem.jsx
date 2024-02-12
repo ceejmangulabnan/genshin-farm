@@ -10,7 +10,7 @@ const TalentBookItem = ({ name, chars, availability, icon }) => {
       <div className="bg-[#C2C2C2] rounded-lg  ">
         <img src={icon} className="max-w-[5rem]" />
       </div>
-      <p>{name}</p>
+      <p className="font-medium">{name}</p>
     </div>
   );
 };
