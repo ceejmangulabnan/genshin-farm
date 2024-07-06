@@ -3,66 +3,10 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light dark;
-  /* color: rgba(255, 255, 255, 0.87); */
-  /* background-color: #242424; */
-  /* background-color: #222222; */
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.fourstar-bg {
-  /* background: rgb(135, 34, 195); */
-  /* background: -moz-linear-gradient( */
-  /*   0deg, */
-  /*   rgba(135, 34, 195, 1) 0%, */
-  /*   rgba(123, 45, 253, 1) 100% */
-  /* ); */
-  /* background: -webkit-linear-gradient( */
-  /*   0deg, */
-  /*   rgba(135, 34, 195, 1) 0%, */
-  /*   rgba(123, 45, 253, 1) 100% */
-  /* ); */
-  /* background: linear-gradient( */
-  /*   0deg, */
-  /*   rgba(135, 34, 195, 1) 0%, */
-  /*   rgba(123, 45, 253, 1) 100% */
-  background: rgb(135, 9, 174);
-  background: -moz-linear-gradient(
-    0deg,
-    rgba(135, 9, 174, 1) 0%,
-    rgba(89, 38, 105, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    0deg,
-    rgba(135, 9, 174, 1) 0%,
-    rgba(89, 38, 105, 1) 100%
-  );
-  background: linear-gradient(
-    0deg,
-    rgba(135, 9, 174, 1) 0%,
-    rgba(89, 38, 105, 1) 100%
-  ); /* ); */
-}
-
-.fivestar-bg {
-  background: rgb(223, 191, 0);
-  background: -moz-linear-gradient(
-    0deg,
-    rgba(223, 191, 0, 1) 0%,
-    rgba(213, 145, 0, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    0deg,
-    rgba(223, 191, 0, 1) 0%,
-    rgba(213, 145, 0, 1) 100%
-  );
-  background: linear-gradient(
-    0deg,
-    rgba(223, 191, 0, 1) 0%,
-    rgba(213, 145, 0, 1) 100%
-  );
 }
