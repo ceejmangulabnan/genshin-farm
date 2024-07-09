@@ -1,8 +1,14 @@
+import Dailies from "./components/Dailies"
+import Navbar from "./components/Navbar"
+
 const App = () => {
 
   return (
     <>
-      <div>App</div>
+      <div>
+        <Navbar />
+        <Dailies />
+      </div>
     </>
   )
 }
