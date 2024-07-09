@@ -1,12 +1,15 @@
-
+import { TalentBookData } from "../../types/TalentBookTypes"
 
 interface TalentBookIconProps {
-  talentBookIcons: string[]
+  talentBook: TalentBookData;
 }
 
-const TalentBookIcon = (talentBookIcon: TalentBookIconProp) => {
+const TalentBookIcon = ({ talentBook }: TalentBookIconProps) => {
+  const talentBookName = talentBook.name?.charAt(0).toUpperCase() + talentBook.name?.slice(1)
   return (
-    <div>
+    <div className="talent-book-icon w-20 flex flex-col items-center">
+      <img src={talentBook.icon} alt={`${talentBook.name}-icon`} className="bg-neutral-400 rounded-xl" />
+      <p>{talentBookName}</p>
     </div>
   )
 }

@@ -1,11 +1,9 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 import { TalentBook } from "../types/TalentBookTypes"
-import { filterAvailableMaterials } from "../utils/utils"
-
 
 const useFetchTalentBooks = () => {
-  const [talentBooksData, setTalentBooksData] = useState<null | TalentBook[]>(null)
+  const [talentBooksData, setTalentBooksData] = useState<null | TalentBook>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

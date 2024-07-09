@@ -1,5 +1,4 @@
 // Utility / Helper Functions
-
 import { TalentBook, TalentBookData, WeaponAscension, WeaponAscensionData } from "../types/TalentBookTypes"
 
 export const today = new Date().getDay()
@@ -12,21 +11,25 @@ export const filterAvailableMaterials = (unfilteredDailyMaterials: TalentBook | 
     // Sunday, all items available
     if (today === 0) {
       unfilteredDailyMaterials[key].name = key
+      generateTalentBookIconUrl(unfilteredDailyMaterials[key])
       availableMaterials.push(unfilteredDailyMaterials[key])
     }
     // Monday and Thursday Items
     else if ((today === 1 || today === 4) && (value.availability.includes('Monday'))) {
       unfilteredDailyMaterials[key].name = key
+      generateTalentBookIconUrl(unfilteredDailyMaterials[key])
       availableMaterials.push(unfilteredDailyMaterials[key])
     }
     // Tuesday and Friday Items
     else if ((today === 2 || today === 5) && (value.availability.includes('Tuesday'))) {
       unfilteredDailyMaterials[key].name = key
+      generateTalentBookIconUrl(unfilteredDailyMaterials[key])
       availableMaterials.push(unfilteredDailyMaterials[key])
     }
     // Wednesday and Saturday Items
     else if ((today === 3 || today === 6) && (value.availability.includes('Wednesday'))) {
       unfilteredDailyMaterials[key].name = key
+      generateTalentBookIconUrl(unfilteredDailyMaterials[key])
       availableMaterials.push(unfilteredDailyMaterials[key])
     }
   }
@@ -34,4 +37,8 @@ export const filterAvailableMaterials = (unfilteredDailyMaterials: TalentBook | 
   console.log("Available Today", availableMaterials)
   // Expected Output: TalentBookData[] | WeaponAscensionData[]
   return availableMaterials
+}
+
+export const generateTalentBookIconUrl = (talentBookData: TalentBookData) => {
+  talentBookData.icon = `https://genshin.jmp.blue/materials/talent-book/teachings-of-${talentBookData.name}`
 }

@@ -11,6 +11,7 @@ export interface TalentBookData {
   source: string
   items: TalentBookItemRarity[]
   name?: string
+  icon?: string
 }
 
 export interface TalentBook {
@@ -30,6 +31,7 @@ export interface WeaponAscensionData {
   source: string
   items: WeaponAscensionRarity[]
   name?: string
+  icon?: string
 }
 
 export interface WeaponAscension {

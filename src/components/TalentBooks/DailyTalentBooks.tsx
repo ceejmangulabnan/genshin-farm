@@ -1,31 +1,26 @@
 // Container for available TalentBookRows for each nation
-import { TalentBook } from "../../types/TalentBookTypes"
+import { TalentBookData } from "../../types/TalentBookTypes"
 import DailyTalentBookRow from "./DailyTalentBookRow"
-import TalentBookIcon from "./TalentBookIcon"
 
 export interface DailyTalentBookProps {
-  availableTalentBooks: TalentBook[]
+  availableTalentBooks: TalentBookData[]
 }
 
 const DailyTalentBooks = ({ availableTalentBooks }: DailyTalentBookProps) => {
+  console.log(availableTalentBooks)
 
-  const talentBookNames = Object.keys(availableTalentBooks)
-  talentBookNames.pop()
-
-  const generateTalentBookIcon = () => {
-    const talentBookIcons = []
-    for (const talentBookName of talentBookNames) {
-      let talentBookUrl = `https://genshin.jmp.blue/materials/talent-book/teachings-of-${talentBookName}`
-      talentBookIcons.push(talentBookUrl)
-    }
-
-    return talentBookIcons
-  }
-
-  const talentBookIcons = generateTalentBookIcon()
+  // Maps over DailyTalentBookRow
   return (
-    <div>DailyTalentBooks
+    <div className="">
+      <h2 className="text-lg font-medium">Daily Talent Books</h2>
 
+      <div className="daily-talent-books bg-gray-200 px-8 py-2 rounded-xl">
+        {
+          availableTalentBooks.map((talentBook) => (
+            <DailyTalentBookRow key={talentBook.name} talentBook={talentBook} />
+          ))
+        }
+      </div>
     </div>
   )
 }
