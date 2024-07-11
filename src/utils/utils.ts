@@ -1,5 +1,5 @@
 // Utility / Helper Functions
-import { TalentBook, TalentBookData, WeaponAscension, WeaponAscensionData } from "../types/TalentBookTypes"
+import { TalentBook, TalentBookData, WeaponAscension, WeaponAscensionData, CharData, WeaponAscensionRarity } from "../types/TalentBookTypes"
 
 export const today = new Date().getDay()
 
@@ -41,4 +41,40 @@ export const filterAvailableMaterials = (unfilteredDailyMaterials: TalentBook | 
 
 export const generateTalentBookIconUrl = (talentBookData: TalentBookData) => {
   talentBookData.icon = `https://genshin.jmp.blue/materials/talent-book/teachings-of-${talentBookData.name}`
+}
+
+export const generateCharIconUrls = (charData: CharData[]) => {
+  if (charData) {
+    for (const char of charData) {
+      if (char.name.toLowerCase().includes('traveler')) {
+        char.icon = `https://genshin.jmp.blue/characters/${char.id}/icon-big-lumine`
+      } else {
+
+        char.icon = `https://genshin.jmp.blue/characters/${char.id}/icon-big`
+      }
+    }
+
+    return charData
+  }
+}
+
+export const formatDisplayName = (str: string) => {
+  const formattedStr = str.slice(str.indexOf(' ') + 1)
+  return formattedStr
+}
+
+export const capitalizeFirstChar = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+export const formatCleanString = (str: string) => {
+  return str.replaceAll("-", " ")
+}
+
+export const formatDashedString = (str: string) => {
+  return str.toLowerCase().replaceAll(" ", "-")
+}
+
+export const compareRarity = (a: CharData | WeaponAscensionRarity, b: CharData | WeaponAscensionRarity,) => {
+  return b.rarity - a.rarity
 }

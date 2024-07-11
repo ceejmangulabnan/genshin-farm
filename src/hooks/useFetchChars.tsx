@@ -1,28 +1,38 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
+import { CharData } from "../types/TalentBookTypes"
 
-type CharData = {
-  charName: string
-}[]
-
-const useFetchChars = () => {
-  const [charData, setCharData] = useState<null | CharData>(null)
+interface UseFetchCharsProps {
+  talentBookChars: string[]
+}
+// Receives list of characters as props
+const useFetchChars = ({ talentBookChars }: UseFetchCharsProps) => {
+  const [charData, setCharData] = useState<null | CharData[]>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchChars = async () => {
+      setLoading(true)
+      const allCharData: CharData[] = []
+
       try {
-        const response = await axios.get('https://genshin.jmp.blue/characters')
-        const data = await response.data as CharData
-        setCharData(data)
+        const responses = talentBookChars.map((charName) =>
+          axios.get(`https://genshin.jmp.blue/characters/${charName}`)
+        )
+        const data = await Promise.all(responses)
+        data.map(response => allCharData.push(response.data))
+
+        setCharData(allCharData)
       } catch (error) {
-        console.log(error)
+        console.log(error.message)
       } finally {
         setLoading(false)
       }
     }
 
-    fetchChars()
+    if (talentBookChars) {
+      fetchChars()
+    }
   }, [])
 
   return { charData, loading }

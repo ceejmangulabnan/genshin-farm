@@ -18,6 +18,31 @@ export interface TalentBook {
   [talentBookName: string]: TalentBookData
 }
 
+// CharacterData
+
+export interface CharData {
+  name: string
+  vision: "Pyro" | "Hydro" | "Electro" | "Cryo" | "Dendro" | "Anemo" | "Geo"
+  weapon: "Sword" | "Claymore" | "Catalyst" | "Bow" | "Polearm"
+  gender?: "Male" | "Female"
+  nation: "Monstadt" | "Liyue" | "Inazuma" | "Sumeru" | "Fontaine"
+  rarity: 4 | 5
+  id: string
+
+  title?: string
+  constellation: string
+  description: string
+
+  skillTalents: object[]
+  passiveTalents: object[]
+  constellations: object[]
+
+  vision_key: string
+  weapon_type: string
+
+  icon?: string
+}
+
 // WeaponAscension
 export interface WeaponAscensionRarity {
   id: string
