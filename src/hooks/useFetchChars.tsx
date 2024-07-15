@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 import { CharData } from "../types/TalentBookTypes"
 
 interface UseFetchCharsProps {
@@ -24,7 +24,9 @@ const useFetchChars = ({ talentBookChars }: UseFetchCharsProps) => {
 
         setCharData(allCharData)
       } catch (error) {
-        console.log(error.message)
+        if (error instanceof AxiosError) {
+          console.log(error)
+        }
       } finally {
         setLoading(false)
       }
