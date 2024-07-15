@@ -8,9 +8,8 @@ interface DailyTalentBookRowProps {
 
 const DailyTalentBookRow = ({ talentBook }: DailyTalentBookRowProps) => {
   return (
-    <div className='daily-talent-book-row py-4 border border-b-gray-300 flex justify-between'>
+    <div className='daily-talent-book-row py-4 border border-b-gray-300 flex justify-between items-center'>
       <TalentBookIcon talentBook={talentBook} />
-      {/* Char Icons Here */}
       <TalentBookChars talentBookChars={talentBook.characters} />
     </div>
   )

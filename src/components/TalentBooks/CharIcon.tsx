@@ -12,7 +12,7 @@ const CharIcon = ({ charData }: CharIconProps) => {
 
   return (
     <div className='flex flex-col items-center'>
-      {formattedName.includes('Traveler') ? <p>{`${formattedName} (${charData.vision})`}</p> : <p>{formattedName}</p>}
+      {formattedName.includes('Traveler') ? <p className='text-sm'>{`${formattedName} (${charData.vision})`}</p> : <p className='text-sm'>{formattedName}</p>}
       <img
         src={charData.icon}
         alt={charData.id + '-icon'}

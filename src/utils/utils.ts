@@ -43,7 +43,7 @@ export const generateTalentBookIconUrl = (talentBookData: TalentBookData) => {
   talentBookData.icon = `https://genshin.jmp.blue/materials/talent-book/teachings-of-${talentBookData.name}`
 }
 
-export const generateCharIconUrls = (charData: CharData[]) => {
+export const generateCharIconUrls = (charData: CharData[]): CharData[] => {
   if (charData) {
     for (const char of charData) {
       if (char.name.toLowerCase().includes('traveler')) {
@@ -53,9 +53,8 @@ export const generateCharIconUrls = (charData: CharData[]) => {
         char.icon = `https://genshin.jmp.blue/characters/${char.id}/icon-big`
       }
     }
-
-    return charData
   }
+  return charData
 }
 
 export const formatDisplayName = (str: string) => {
@@ -68,11 +67,11 @@ export const capitalizeFirstChar = (str: string) => {
 }
 
 export const formatCleanString = (str: string) => {
-  return str.replaceAll("-", " ")
+  return str.replace("-", " ")
 }
 
 export const formatDashedString = (str: string) => {
-  return str.toLowerCase().replaceAll(" ", "-")
+  return str.toLowerCase().replace(" ", "-")
 }
 
 export const compareRarity = (a: CharData | WeaponAscensionRarity, b: CharData | WeaponAscensionRarity,) => {

@@ -19,7 +19,7 @@ const TalentBookChars = ({ talentBookChars }: TalentBookCharsProps) => {
   // Sorts Chars according to rarity
   iconCharData.sort(compareRarity)
   return (
-    <div className="talent-book-chars flex gap-6 flex-wrap justify-end">
+    <div className="talent-book-chars flex gap-1 flex-wrap justify-end">
       {(!loading && iconCharData) &&
         iconCharData.map(data => (
           <CharIcon key={data.id + '-icon'} charData={data} />
